@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>카드 선택</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="page page--pick">
+  <header class="topbar">
+    <a href="/index.html" class="topbar__back" aria-label="홈으로">←</a>
+    <div class="topbar__title">카드 선택</div>
+    <div class="topbar__spacer"></div>
+  </header>
+
+  <main class="container">
+    <p class="helper">집중해서 한 장을 고르세요.</p>
+
+    <section id="cardStage" class="stage"></section>
+
+    <button id="drawBtn" class="btn btn--disabled" disabled>카드 뽑기</button>
+  </main>
+
+  <div id="overlay" class="overlay" hidden>
+    <div class="overlay__box">
+      <div class="loader" aria-hidden="true"></div>
+      <p>결과 해석 중...</p>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.loading{display:grid;place-items:center;padding:40px 0}
+.loader{width:42px;height:42px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:#fff;margin:0 auto 10px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.result{display:grid;gap:14px;justify-items:center;text-align:center}
+.result__card{margin:8px 0}
+.card--front{background:linear-gradient(160deg,#ffc24b 0%,#ff7d7d 50%,#ffb3e8 100%);position:relative;width:var(--card-w);height:var(--card-h);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card--front .card__face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:48px;color:#2b1a1a;text-shadow:0 2px 0 rgba(255,255,255,.4)}
+.result__title{margin:6px 0 2px}
+.result__text{color:var(--fg);opacity:.9}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>결과 - 마법의 소라고둥</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/result.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a href="/index.html" class="topbar__back" aria-label="홈으로">←</a>
+      <div class="topbar__title">결과</div>
+      <div class="topbar__spacer"></div>
+    </header>
+
+    <section class="card">
+      <!-- 로딩 -->
+      <div id="loadingBox" class="loading">
+        <div class="loader" aria-hidden="true"></div>
+        <p>카드 뽑는 중…</p>
+      </div>
+
+      <!-- 결과 -->
+      <section id="resultArea" class="result" hidden>
+        <div class="result__card">
+          <div class="card--front">
+            <div class="card__face">★</div>
+          </div>
+        </div>
+        <h2 id="resultTitle" class="result__title"></h2>
+        <p id="resultText" class="result__text"></p>
+
+        <div class="row" style="justify-content:center; gap:10px;">
+          <a class="btn" href="/draw.html">다시 뽑기</a>
+          <a class="btn secondary" href="/index.html">홈으로</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/result.js"></script>
+</body>
+</html>
