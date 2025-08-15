@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>코딩 점집 – 마법의 소라고둥</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <div class="hero">
+        <div>
+          <h1>코딩 점집<br/>마법의 소라고둥</h1>
+          <p class="lead">변수 한 줄로 오늘의 운세를 점쳐보세요!<br/>
+            <b>홈 → 카드 뽑기 → 결과 → 홈</b> 순서로 진행됩니다.</p>
+          <div class="row">
+            <div class="pill">Flow: 홈 → 카드 뽑기 → 결과 → 홈</div>
+            <a class="btn" href="draw.html" aria-label="카드 뽑기 시작">카드 뽑기 시작</a>
+            <a class="btn secondary" href="#how">진행 방법</a>
+          </div>
+        </div>
+        <div class="shell" aria-hidden="true" title="마법의 소라고둥"></div>
+      </div>
+    </section>
+
+    <section id="how" class="card">
+      <h2 style="margin:0 0 10px">진행 방법</h2>
+      <ol style="margin:0 0 12px 18px; line-height:1.7">
+        <li>마법의 소라고둥 상자에서 <b>변수 카드 1장</b>을 뽑아요.</li>
+        <li>화면에 뜨는 <b>변수 문장</b>을 정확히 입력하거나, <b>결과 보기</b>를 눌러요.</li>
+        <li>오늘의 운세, 개발자 조언, 전공 밈을 확인하고 결과 카드를 수령해요.</li>
+      </ol>
+      <div class="row"><a class="btn" href="draw.html">바로 카드 뽑기</a></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>점괘 결과 – 마법의 소라고둥</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <div class="row">
+        <h2 style="margin:0">점괘 결과</h2>
+        <span id="rarityPill" class="pill">✨ 결과</span>
+      </div>
+
+      <div class="box">
+        <div class="kbd"><span>뽑은 변수</span><code id="varLine"></code></div>
+        <div style="margin-top:10px">
+          <label for="verifyInput" class="small">직접 입력해보기 (정확히 입력하면 결과 해제 ✅)</label>
+          <input id="verifyInput" class="code" placeholder="예) let error = 404;" autocomplete="off" />
+          <div class="row" style="margin-top:10px">
+            <button id="unlockBtn" class="btn secondary">입력 확인</button>
+            <button id="revealBtn" class="btn">그냥 결과 보기</button>
+            <a class="btn secondary" href="draw.html">다시 뽑기</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="resultBoxes" class="result hidden" aria-hidden="true">
+        <div class="box">
+          <h3>오늘의 운세 <span id="vibe" class="tag"></span></h3>
+          <p id="fortune"></p>
+        </div>
+        <div class="box">
+          <h3>개발자 조언</h3>
+          <p id="advice"></p>
+        </div>
+        <div class="box">
+          <h3>소프트웨어 전공 밈</h3>
+          <p id="meme"></p>
+        </div>
+        <div class="row">
+          <a id="homeBtn" class="btn" href="index.html">홈으로 돌아가기</a>
+        </div>
+        <p class="foot">* 결과는 재미로만 봐주세요 :)</p>
+      </div>
+
+      <div id="emptyState" class="center hidden" style="margin-top:12px">
+        <div class="box">
+          <p>아직 카드가 선택되지 않았어요.</p>
+          <a class="btn" href="draw.html">카드 뽑기 화면으로</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    const state = getCurrentCard();
+    const $ = (s)=>document.querySelector(s);
+
+    if(!state){
+      // 결과 페이지 직접 접근 시 빈 상태 보여주기
+      document.getElementById('emptyState').classList.remove('hidden');
+      document.getElementById('resultBoxes').classList.add('hidden');
+      document.querySelector('.box').classList.add('hidden');
+    }else{
+      const rarityMap = { ok:'ok', meh:'meh', bad:'bad' };
+      $('#varLine').textContent = state.code;
+      $('#rarityPill').textContent = '🔒 결과 잠금';
+
+      const unlock = ()=>{
+        $('#fortune').textContent = state.fortune;
+        $('#advice').textContent = state.advice;
+        $('#meme').textContent = state.meme;
+        const vibe = $('#vibe');
+        vibe.className = 'tag ' + rarityMap[state.rarity];
+        vibe.textContent = state.rarity==='ok' ? '🌟 행운'
+                         : state.rarity==='meh' ? '🌀 변동'
+                         : '⚠️ 경고';
+        $('#resultBoxes').classList.remove('hidden');
+        $('#resultBoxes').setAttribute('aria-hidden','false');
+        $('#rarityPill').textContent = '✅ 결과 해제';
+      };
+
+      document.getElementById('unlockBtn').addEventListener('click', ()=>{
+        const v = (document.getElementById('verifyInput').value||'').trim();
+        if(v === state.code) unlock();
+        else document.getElementById('rarityPill').textContent = '❌ 다시 입력해보세요';
+      });
+      document.getElementById('revealBtn').addEventListener('click', unlock);
+      document.getElementById('verifyInput').addEventListener('keydown', e=>{
+        if(e.key==='Enter') document.getElementById('unlockBtn').click();
+      });
+    }
+  </script>
+</body>
+</html>
